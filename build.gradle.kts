@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.mrfastwind"
-version = "2.2"
+version = "3.2"
 
 repositories {
     mavenCentral()
