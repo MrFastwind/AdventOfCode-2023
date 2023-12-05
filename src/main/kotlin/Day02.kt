@@ -1,5 +1,5 @@
-import AoCUtils.println
-import AoCUtils.readInput
+import aocutils.println
+import aocutils.readInput
 
 fun main() {
     val day = "Day02"

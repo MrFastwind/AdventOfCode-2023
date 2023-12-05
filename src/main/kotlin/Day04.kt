@@ -1,5 +1,6 @@
-import AoCUtils.println
-import AoCUtils.readInput
+import aocutils.convertions.stringToListOfInt
+import aocutils.println
+import aocutils.readInput
 import kotlin.math.max
 import kotlin.math.pow
 import kotlin.streams.asSequence
@@ -7,22 +8,11 @@ import kotlin.streams.asSequence
 fun main() {
     val day = "Day04"
 
-    fun String.digitsToInt() = this
-        .filter { it.isDigit() }
-        .map { it.digitToInt() }
-        .mapIndexed { index, i -> i * (10.0.pow((this.length - index - 1).toDouble())).toInt() }
-        .sum()
-
-    fun stringToList(numbers:String,separator:String = ""): List<Int> = numbers.split(separator).asSequence()
-        .map { it.digitsToInt() }
-        .filter { it!=0 }
-        .toList()
-
     fun recursiveStep(input: List<String>, index: Int): Int {
         if(index>=input.size) return 1
         val numbers= input[index].split(":")[1].split("|")
-        val winingNumbers = stringToList(numbers[0])
-        val myNumbers = stringToList(numbers[1])
+        val winingNumbers = stringToListOfInt(numbers[0])
+        val myNumbers = stringToListOfInt(numbers[1])
 
         val count = winingNumbers.asSequence()
             .filter { myNumbers.contains(it) }
@@ -52,8 +42,8 @@ fun main() {
         return input.asSequence()
             .map { it.split(":")[1] }
             .map { line -> val numbers = line.split("|")
-                val winingNumbers = stringToList(numbers[0]," ")
-                val myNumbers = stringToList(numbers[1]," ")
+                val winingNumbers = stringToListOfInt(numbers[0]," ")
+                val myNumbers = stringToListOfInt(numbers[1]," ")
                 var count = winingNumbers.asSequence()
                     .filter { myNumbers.contains(it) }
                     .count()
@@ -69,8 +59,8 @@ fun main() {
             .map { it.split(":")[1] }
             .mapIndexed { idx, line -> val numbers = line.split("|")
                 val actualCopies = copies.compute(idx) { _, v -> if(v==null) 1 else v+1 }!!
-                val winingNumbers = stringToList(numbers[0]," ")
-                val myNumbers = stringToList(numbers[1]," ")
+                val winingNumbers = stringToListOfInt(numbers[0]," ")
+                val myNumbers = stringToListOfInt(numbers[1]," ")
                 winingNumbers.asSequence()
                     .filter { myNumbers.contains(it) }
                     .mapIndexed { cidx, _ -> idx+cidx+1}

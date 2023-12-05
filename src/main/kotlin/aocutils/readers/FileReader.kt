@@ -1,4 +1,4 @@
-package AoCUtils.readers
+package aocutils.readers
 
 import java.io.File
 

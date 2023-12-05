@@ -1,10 +1,9 @@
-package AoCUtils
+package aocutils
 
 import java.math.BigInteger
 import java.security.MessageDigest
 import kotlin.io.path.Path
 import kotlin.io.path.div
-import kotlin.io.path.readBytes
 import kotlin.io.path.readLines
 
 val resourcePath = Path("src/main/resources/")
