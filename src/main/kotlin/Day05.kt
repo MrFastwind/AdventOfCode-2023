@@ -36,7 +36,7 @@ fun main() {
             .groupBy { count }
             .map {
                 group-> group.value.asSequence()
-                .map { stringToListOfType(it, {str->str.toLong()}," ") }
+                .map { it.stringToListOfType({str->str.toLong()}," ") }
                 .map {
                     Triple(it[0],it[1],it[2]) }
                 .toSet()
