@@ -50,3 +50,14 @@ You have to count all the possible configurations (how much time to spend to get
 
 I started searching a mathematical solution;
 but shortly after I noticed that it was faster to test the first half of the combinations, because it was mirrored in the center.  
+
+## [Day 7](https://adventofcode.com/2023/day/7)
+
+Identify the type of hand and the order
+
+To solve this I created:
+1. Class to represent the hand.
+2. Comparable of the hand.
+3. relative function to calculate type, and card value.
+
+Part 2 require to handle the Jack card as Jolly cars, so extending the class to solve the problem
