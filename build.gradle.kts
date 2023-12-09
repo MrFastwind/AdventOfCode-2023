@@ -6,12 +6,17 @@ plugins {
 group = "io.github.mrfastwind"
 version = "6.2"
 
+kotlin {
+    jvmToolchain(21)
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test:1.8.20-RC")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 }
 
 tasks.test {
