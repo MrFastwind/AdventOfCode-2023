@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "io.github.mrfastwind"
-version = "8.1"
+version = "9.2"
 
 kotlin {
     jvmToolchain(21)

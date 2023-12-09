@@ -1,29 +1,27 @@
 import aocutils.println
 import aocutils.readInput
-import kotlinx.coroutines.*
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.sync.Semaphore
-import java.util.stream.Collectors
 
-@OptIn(DelicateCoroutinesApi::class)
 fun main() {
     val day = "Day08"
 
-    fun handleInput(input: List<String>): Pair<List<Char>, Map<String, Pair<String, String>>> {
-
-        val steps = input[0].toList()
-        val nodes = input.asSequence()
+    fun nodesToMap(input: List<String>): Map<String, Pair<String, String>> = input.asSequence()
             .drop(2)
             .map { line ->
                 line.split("=")[0]
                     .replace(" ", "") to line
-                        .split("=")[1]
+                    .split("=")[1]
                     .replace(" ", "")
                     .replace("(", "")
                     .replace(")", "")
                     .split(",")
                     .zipWithNext()[0]
             }.toMap()
+
+
+    fun handleInput(input: List<String>): Pair<List<Char>, Map<String, Pair<String, String>>> {
+
+        val steps = input[0].toList()
+        val nodes = nodesToMap(input)
 
         return Pair(steps,nodes)
     }
@@ -67,18 +65,7 @@ fun main() {
 
         val steps = input[0].toList()
         val nodes: HashMap<String, Pair<String, String>> = hashMapOf()
-        input.asSequence()
-            .drop(2)
-            .map { line ->
-                line.split("=")[0]
-                    .replace(" ", "") to line
-                    .split("=")[1]
-                    .replace(" ", "")
-                    .replace("(", "")
-                    .replace(")", "")
-                    .split(",")
-                    .zipWithNext()[0]
-            }.forEach { nodes[it.first] = it.second }
+        nodesToMap(input).forEach { (key, value) ->  nodes[key] = value }
         val starting = nodes.keys
             .filter { it.endsWith("A") }.toMutableList()
         return Triple(steps,nodes, starting)
@@ -86,7 +73,7 @@ fun main() {
 
     fun part2(input: List<String>): Long {
         val ( steps,  nodes, starters) = handleInputPart2(input)
-        var selected:MutableList<String> = starters
+        val selected:MutableList<String> = starters
         val iterator = CircularIterator(steps)
         var count = 0L
 

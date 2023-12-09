@@ -79,3 +79,17 @@ If it's possible to lower the required time in accessing the map (or any substit
 
 **Information:** to solve this problem in the day I decided to solve it in a different Language,
 So I can't be sure the solution proposed is 100% correct, but it works with the test case
+
+## [Day 9](https://adventofcode.com/2023/day/9)
+
+The problem was to calculate the next value in the sequence.
+
+the solution required:
+1. sum in pair the values
+2. check if the sums are all 0 (or check if they are all equal)
+3. then calculate the next value of every line as the last element of the line plus the new element of the previous line
+
+In alternative to point 3.:
+accumulate the sums of every last item
+
+The part 2 required to do the same, but with the previous element, so you just need to switch side, and operation
