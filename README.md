@@ -61,3 +61,21 @@ To solve this I created:
 3. relative function to calculate type, and card value.
 
 Part 2 require to handle the Jack card as Jolly cars, so extending the class to solve the problem
+
+## [Day 8](https://adventofcode.com/2023/day/8)
+
+The problem require to follow a path (described in 'L' and 'R') in a mesh of nodes (with 2 arches each) until reaching the end node.
+Part 2 require to do this with multiple starting nodes at the same time, and needs to reach their end node at the same time.
+
+A good solution was to use an iterator to follow the path, and a Map to easily access the node possible directions; 
+but this is not good enough solution second part.
+In fact my first implementation required a lot of time; 
+initially I suspected it was allocation time because I was allocating a new collection every step.
+
+after changing that I noticed that there is another taxing factor:
+the **read-time of map** (taking nearly the 67% of the CPU time) is the next bottleneck.
+
+If it's possible to lower the required time in accessing the map (or any substitution of it), that would increase the performance.
+
+**Information:** to solve this problem in the day I decided to solve it in a different Language,
+So I can't be sure the solution proposed is 100% correct, but it works with the test case
